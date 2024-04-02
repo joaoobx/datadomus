@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 
-class SugestionBoard(models.Model):
+class Convocations(models.Model):
     id = models.UUIDField( 
          primary_key = True, 
          default = uuid.uuid4, 
