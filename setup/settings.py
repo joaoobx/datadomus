@@ -54,6 +54,7 @@ MY_APPS = [
     "documents.apps.DocumentsConfig",
     "service_orders.apps.ServiceOrdersConfig",
     "boards.apps.BoardsConfig",
+    "convocations.apps.ConvocationsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
