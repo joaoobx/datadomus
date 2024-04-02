@@ -48,13 +48,13 @@ THIRD_PARTY_APPS = [
 ]
 
 MY_APPS = [
-    "example.apps.ExampleConfig",
-    "users.apps.UsersConfig",
-    "reservations.apps.ReservationsConfig",
-    "documents.apps.DocumentsConfig",
-    "service_orders.apps.ServiceOrdersConfig",
     "boards.apps.BoardsConfig",
     "convocations.apps.ConvocationsConfig",
+    "documents.apps.DocumentsConfig",
+    "example.apps.ExampleConfig",
+    "reservations.apps.ReservationsConfig",
+    "service_orders.apps.ServiceOrdersConfig",
+    "users.apps.UsersConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
