@@ -52,6 +52,7 @@ MY_APPS = [
     "users.apps.UsersConfig",
     "reservations.apps.ReservationsConfig",
     "documents.apps.DocumentsConfig",
+    "service_orders.apps.ServiceOrdersConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
