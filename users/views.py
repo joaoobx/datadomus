@@ -19,6 +19,7 @@ def login_user(request):
 	else:
 		return render(request, 'authenticate/login.html', {})
 	
+@login_required()
 def logout_user(request):
 	logout(request)
 	messages.success(request, ("Obrigado por usar o Datadomus!!"))
