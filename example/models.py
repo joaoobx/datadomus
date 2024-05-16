@@ -9,6 +9,7 @@ class Example(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True, null=False, blank=False)
     deadline = models.DateField(verbose_name="Data de entrega", null=False, blank=False)
+    image = models.ImageField(null=True, blank=True, upload_to="images/")
     finished_at = models.DateField(null=True)
 
     class Meta:
