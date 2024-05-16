@@ -18,12 +18,12 @@ def listAll(request):
 
 class ExampleCreateView(CreateView):
     model = Example
-    fields = ["title", "deadline"]
+    fields = ["title", "deadline", "image"]
     success_url = reverse_lazy("example_list")
 
 class ExampleUpdateView(UpdateView):
     model = Example
-    fields = ["title", "deadline"]
+    fields = ["title", "deadline", "image"]
     success_url = reverse_lazy("example_list")
 
 class ExampleDeleteView(DeleteView):

@@ -15,6 +15,7 @@
                 <th scope="col">Título</th>
                 <th scope="col">Críado em</th>
                 <th scope="col">Data de entrega</th>
+                <th scope="col">Imagem</th>
                 <th scope="col">Finalizado em</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -26,6 +27,7 @@
                         <td>{{ example.title }}</td>
                         <td>{{ example.created_at }}</td>
                         <td>{{ example.deadline }}</td>
+                        <td><img src="{{ example.image.url }}" width=100></td>
                         <td>{{ example.finished_at|default:"-" }}</td>
                         <td>
                             <a 
