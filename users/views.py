@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse
 
 def login_user(request):
+	if request.user.is_authenticated:
+		return redirect(reverse("example_list")) 
 	if request.method == "POST":
 		username = request.POST['username']
 		password = request.POST['password']

@@ -11,8 +11,10 @@
   <body>
     <nav class="navbar bg-dark mb-4" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'example_list' %}">Example</a>
-            <a class="navbar-brand" href="{% url 'example_list' %}">Ordens de Serviço</a>
+            <a class="navbar-brand">Datadomus</a>
+            {% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'logout_user' %}">Logout</a>
+            {% endif %}
         </div>
     </nav>
 
