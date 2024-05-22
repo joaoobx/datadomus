@@ -15,6 +15,7 @@ from example.views import (
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('example/', include('example.urls')),
+    path('docs/', include('documents.urls')),
     path('', include('users.urls')),
     path('users/', include('django.contrib.auth.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

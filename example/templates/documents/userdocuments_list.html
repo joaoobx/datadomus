@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Tarefas
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Documentos do Condomínio</h1>
+
+    {% if userdocuments_list %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Documento</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for cond_doc in userdocuments_list %}
+                    <tr>
+                        <th scope="row">{{ cond_doc.pk }}</th>
+                        <td>{{ cond_doc.doc_name }}</td>
+                        <td><a href="{{ cond_doc.doc_url.url }}" download="{{ cond_doc.doc_url.url }}"> Baixar documento</a></td>
+                        <td>
+                            <a
+                                href="{% url 'cond_docs_update' pk=cond_doc.pk %}" 
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Editar
+                            </a>
+                            <a href="{% url 'cond_docs_delete' pk=cond_doc.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há documentos lançados pelo condomínio</p>
+    {% endif %}
+
+    <a href="{% url 'cond_docs_create' %}" class="btn btn-primary">Novo Documento</a>
+{% endblock content %}
+

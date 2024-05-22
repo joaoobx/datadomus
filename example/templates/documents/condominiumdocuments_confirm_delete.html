@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Excluír Documento
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Excluír Documento?</h1>
+
+    <p>Tem certeza que deseja excluír o documento <strong>{{ condominiumdocuments.doc_name }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">Excluír</button>
+        <a href="{% url 'cond_docs_list' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+{% endblock content %}
