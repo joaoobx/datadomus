@@ -17,19 +17,19 @@
             </tr>
             </thead>
             <tbody>
-                {% for cond_doc in userdocuments_list %}
+                {% for user_doc in userdocuments_list %}
                     <tr>
-                        <th scope="row">{{ cond_doc.pk }}</th>
-                        <td>{{ cond_doc.doc_name }}</td>
-                        <td><a href="{{ cond_doc.doc_url.url }}" download="{{ cond_doc.doc_url.url }}"> Baixar documento</a></td>
+                        <th scope="row">{{ user_doc.pk }}</th>
+                        <td>{{ user_doc.doc_name }}</td>
+                        <td><a href="{{ user_doc.doc_url.url }}" download="{{ user_doc.doc_url.url }}"> Baixar documento</a></td>
                         <td>
                             <a
-                                href="{% url 'cond_docs_update' pk=cond_doc.pk %}" 
+                                href="{% url 'user_docs_update' pk=user_doc.pk %}" 
                                 class="btn btn-secondary btn-sm"
                             >
                                 Editar
                             </a>
-                            <a href="{% url 'cond_docs_delete' pk=cond_doc.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                            <a href="{% url 'user_docs_delete' pk=user_doc.pk %}" class="btn btn-danger btn-sm">Excluír</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -39,6 +39,6 @@
         <p>Não há documentos lançados pelo condomínio</p>
     {% endif %}
 
-    <a href="{% url 'cond_docs_create' %}" class="btn btn-primary">Novo Documento</a>
+    <a href="{% url 'user_docs_create' %}" class="btn btn-primary">Novo Documento</a>
 {% endblock content %}
 
