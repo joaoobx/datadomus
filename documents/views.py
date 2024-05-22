@@ -28,17 +28,29 @@ class CondominiumDocumentsDeleteView(LoginRequiredMixin, DeleteView):
 
 class UserDocumentsListView(LoginRequiredMixin, ListView):
     model = UserDocuments
+    def form_valid(self, form):
+        form.instance.user = self.request.user.id
+        return super(UserDocuments, self).form_valid(form)
 
 class UserDocumentsCreateView(LoginRequiredMixin, CreateView):
     model = UserDocuments
     fields = ["doc_name", "doc_url"]
     success_url = reverse_lazy("user_docs_list")
+    def form_valid(self, form):
+        form.instance.user = self.request.user.id
+        return super(UserDocuments, self).form_valid(form)
 
 class UserDocumentsUpdateView(LoginRequiredMixin, UpdateView):
     model = UserDocuments
     fields = ["doc_name", "doc_url"]
     success_url = reverse_lazy("user_docs_list")
+    def form_valid(self, form):
+        form.instance.user = self.request.user.id
+        return super(UserDocuments, self).form_valid(form)
 
 class UserDocumentsDeleteView(LoginRequiredMixin, DeleteView):
     model = UserDocuments
     success_url = reverse_lazy("user_docs_list")
+    def form_valid(self, form):
+        form.instance.user = self.request.user.id
+        return super(UserDocuments, self).form_valid(form)

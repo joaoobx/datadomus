@@ -14,7 +14,8 @@
             <a class="navbar-brand">Datadomus</a>
             {% if user.is_authenticated %}
             <a class="navbar-brand" href="{% url 'example_list' %}">Exemplo</a>
-            <a class="navbar-brand" href="{% url 'cond_docs_list' %}">Documentos</a>
+            <a class="navbar-brand" href="{% url 'cond_docs_list' %}">Documentos do Condomínio</a>
+            <a class="navbar-brand" href="{% url 'user_docs_list' %}">Documentos do Usuário</a>
             <a class="navbar-brand" href="{% url 'logout_user' %}">Sair</a>
             {% endif %}
         </div>
