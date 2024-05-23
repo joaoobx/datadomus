@@ -3,17 +3,17 @@
 
 {% block page_title %}
   {% if notice.pk %}
-    Editar Aviso
+    Editar Evento
   {% else %}
-    Novo Aviso
+    Novo Evento
   {% endif %}
 {% endblock page_title %}
 
 {% block content %}
   {% if notice.pk %}
-    <h1>Editar aviso</h1>
+    <h1>Editar evento</h1>
   {% else %}
-    <h1>Novo aviso</h1>
+    <h1>Novo evento</h1>
   {% endif %}
 
   <form method="POST" enctype="multipart/form-data">

@@ -42,7 +42,7 @@
         <p>Não há documentos lançados pelo condomínio</p>
     {% endif %}
 
-    {% if user.is_admin %}
+    {% if user.is_staff %}
         <a href="{% url 'notice_boards_create' %}" class="btn btn-primary">Novo Documento</a>
     {% endif %}
     

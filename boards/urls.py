@@ -1,6 +1,5 @@
 from django.urls import path
 
-from example import views
 from boards.views import (
     NoticeBoardListView,
     NoticeBoardCreateView,
@@ -9,7 +8,11 @@ from boards.views import (
     SugestionBoardListView,
     SugestionBoardCreateView,
     SugestionBoardDeleteView,
-    SugestionBoardUpdateView
+    SugestionBoardUpdateView,
+    EventBoardListView,
+    EventBoardCreateView,
+    EventBoardUpdateView,
+    EventBoardDeleteView
 )
 
 urlpatterns = [
@@ -21,4 +24,8 @@ urlpatterns = [
     path("sugestion-create", SugestionBoardCreateView.as_view(), name="sugestion_boards_create"),
     path("sugestion-update/<int:pk>", SugestionBoardUpdateView.as_view(), name="sugestion_boards_update"),
     path("sugestion-delete/<int:pk>", SugestionBoardDeleteView.as_view(), name="sugestion_boards_delete"),
+    path("event-list", EventBoardListView.as_view(), name="event_boards_list"),
+    path("event-create", EventBoardCreateView.as_view(), name="event_boards_create"),
+    path("event-update/<int:pk>", EventBoardUpdateView.as_view(), name="event_boards_update"),
+    path("event-delete/<int:pk>", EventBoardDeleteView.as_view(), name="event_boards_delete"),
 ]
