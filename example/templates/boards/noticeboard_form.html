@@ -2,15 +2,15 @@
 {% load crispy_forms_tags %}
 
 {% block page_title %}
-  {% if user_doc.pk %}
-    Editar Documento
+  {% if notice.pk %}
+    Editar Aviso
   {% else %}
-    Novo Documento
+    Novo Aviso
   {% endif %}
 {% endblock page_title %}
 
 {% block content %}
-  {% if user_doc.pk %}
+  {% if notice.pk %}
     <h1>Editar documento</h1>
   {% else %}
     <h1>Novo documento</h1>
