@@ -21,3 +21,20 @@ class NoticeBoardUpdateView(LoginRequiredMixin, UpdateView):
 class NoticeBoardDeleteView(LoginRequiredMixin, DeleteView):
     model = NoticeBoard
     success_url = reverse_lazy("notice_boards_list")
+
+class SugestionBoardListView(LoginRequiredMixin, ListView):
+    model = SugestionBoard
+
+class SugestionBoardCreateView(LoginRequiredMixin, CreateView):
+    model = SugestionBoard
+    fields = ["title", "description", "doc_url"]
+    success_url = reverse_lazy("sugestion_boards_list")
+
+class SugestionBoardUpdateView(LoginRequiredMixin, UpdateView):
+    model = SugestionBoard
+    fields = ["title", "description", "doc_url"]
+    success_url = reverse_lazy("sugestion_boards_list")
+
+class SugestionBoardDeleteView(LoginRequiredMixin, DeleteView):
+    model = SugestionBoard
+    success_url = reverse_lazy("sugestion_boards_list")
