@@ -55,3 +55,20 @@ class EventBoardUpdateView(LoginRequiredMixin, UpdateView):
 class EventBoardDeleteView(LoginRequiredMixin, DeleteView):
     model = EventBoard
     success_url = reverse_lazy("event_boards_list")
+
+class UsefulPhonesBoardListView(LoginRequiredMixin, ListView):
+    model = UsefulPhonesBoard
+
+class UsefulPhonesBoardCreateView(LoginRequiredMixin, CreateView):
+    model = UsefulPhonesBoard
+    fields = ["title", "description", "doc_url"]
+    success_url = reverse_lazy("useful_phones_boards_list")
+
+class UsefulPhonesBoardUpdateView(LoginRequiredMixin, UpdateView):
+    model = UsefulPhonesBoard
+    fields = ["title", "description", "doc_url"]
+    success_url = reverse_lazy("useful_phones_boards_list")
+
+class UsefulPhonesBoardDeleteView(LoginRequiredMixin, DeleteView):
+    model = UsefulPhonesBoard
+    success_url = reverse_lazy("useful_phones_boards_list")

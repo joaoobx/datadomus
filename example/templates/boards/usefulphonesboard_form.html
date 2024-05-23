@@ -3,17 +3,17 @@
 
 {% block page_title %}
   {% if notice.pk %}
-    Editar Evento
+    Editar Telefone Útil
   {% else %}
-    Novo Evento
+    Novo Telefone Útil
   {% endif %}
 {% endblock page_title %}
 
 {% block content %}
   {% if notice.pk %}
-    <h1>Editar evento</h1>
+    <h1>Editar telefone útil</h1>
   {% else %}
-    <h1>Novo evento</h1>
+    <h1>Novo telefone útil</h1>
   {% endif %}
 
   <form method="POST" enctype="multipart/form-data">

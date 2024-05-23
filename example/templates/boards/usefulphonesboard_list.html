@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block page_title %}
-    Lista de Eventos
+    Lista de Telefones Úteis
 {% endblock page_title %}
 
 {% block content %}
-    <h1>Lista de Eventos</h1>
+    <h1>Lista de Telefones Úteis</h1>
 
-    {% if eventboard_list %}
+    {% if usefulphonesboard_list %}
         <table class="table">
             <thead>
             <tr>
@@ -20,32 +20,32 @@
             </tr>
             </thead>
             <tbody>
-                {% for event in eventboard_list %}
+                {% for usefulphone in usefulphonesboard_list %}
                     <tr>
-                        <th scope="row">{{ event.pk }}</th>
-                        <td>{{ event.title }}</td>
-                        <td>{{ event.description }}</td>
-                        <td><a href="{{ event.doc_url.url }}" download="{{ event.doc_url.url }}"> Baixar documento</a></td>
-                        <td>{{ event.created_at }}</td>
+                        <th scope="row">{{ usefulphone.pk }}</th>
+                        <td>{{ usefulphone.title }}</td>
+                        <td>{{ usefulphone.description }}</td>
+                        <td><a href="{{ usefulphone.doc_url.url }}" download="{{ usefulphone.doc_url.url }}"> Baixar documento</a></td>
+                        <td>{{ usefulphone.created_at }}</td>
                         <td>
                             <a
-                                href="{% url 'event_boards_update' pk=event.pk %}" 
+                                href="{% url 'useful_phones_boards_update' pk=usefulphone.pk %}" 
                                 class="btn btn-secondary btn-sm"
                             >
                                 Editar
                             </a>
-                            <a href="{% url 'event_boards_delete' pk=event.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                            <a href="{% url 'useful_phones_boards_delete' pk=usefulphone.pk %}" class="btn btn-danger btn-sm">Excluír</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p>Não há eventos lançados pelo condomínio</p>
+        <p>Não há telefones úteis lançados pelo condomínio</p>
     {% endif %}
     
     {% if user.is_staff %}
-        <a href="{% url 'event_boards_create' %}" class="btn btn-primary">Novo Evento</a>
+        <a href="{% url 'useful_phones_boards_create' %}" class="btn btn-primary">Novo Telefone Útil</a>
     {% endif %}
 {% endblock content %}
 

@@ -12,7 +12,11 @@ from boards.views import (
     EventBoardListView,
     EventBoardCreateView,
     EventBoardUpdateView,
-    EventBoardDeleteView
+    EventBoardDeleteView,
+    UsefulPhonesBoardListView,
+    UsefulPhonesBoardCreateView,
+    UsefulPhonesBoardUpdateView,
+    UsefulPhonesBoardDeleteView
 )
 
 urlpatterns = [
@@ -28,4 +32,8 @@ urlpatterns = [
     path("event-create", EventBoardCreateView.as_view(), name="event_boards_create"),
     path("event-update/<int:pk>", EventBoardUpdateView.as_view(), name="event_boards_update"),
     path("event-delete/<int:pk>", EventBoardDeleteView.as_view(), name="event_boards_delete"),
+    path("useful-phones-list", UsefulPhonesBoardListView.as_view(), name="useful_phones_boards_list"),
+    path("useful-phones-create", UsefulPhonesBoardCreateView.as_view(), name="useful_phones_boards_create"),
+    path("useful-phones-update/<int:pk>", UsefulPhonesBoardUpdateView.as_view(), name="useful_phones_boards_update"),
+    path("useful-phones-delete/<int:pk>", UsefulPhonesBoardDeleteView.as_view(), name="useful_phones_boards_delete"),
 ]
