@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block page_title %}
-  {% if notice.pk %}
+  {% if sugestion.pk %}
     Editar Sugestão
   {% else %}
     Nova Sugestão
@@ -10,7 +10,7 @@
 {% endblock page_title %}
 
 {% block content %}
-  {% if notice.pk %}
+  {% if sugestion.pk %}
     <h1>Editar sugestão</h1>
   {% else %}
     <h1>Nova sugestão</h1>

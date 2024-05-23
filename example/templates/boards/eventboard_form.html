@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block page_title %}
-  {% if notice.pk %}
+  {% if event.pk %}
     Editar Evento
   {% else %}
     Novo Evento
@@ -10,7 +10,7 @@
 {% endblock page_title %}
 
 {% block content %}
-  {% if notice.pk %}
+  {% if event.pk %}
     <h1>Editar evento</h1>
   {% else %}
     <h1>Novo evento</h1>

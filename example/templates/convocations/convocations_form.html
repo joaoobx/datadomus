@@ -2,18 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block page_title %}
-  {% if usefulphone.pk %}
-    Editar Telefone Útil
+  {% if convocations.pk %}
+    Editar Convocação
   {% else %}
-    Novo Telefone Útil
+    Nova Convocação
   {% endif %}
 {% endblock page_title %}
 
 {% block content %}
-  {% if usefulphone.pk %}
-    <h1>Editar telefone útil</h1>
+  {% if convocations.pk %}
+    <h1>Editar convocação</h1>
   {% else %}
-    <h1>Novo telefone útil</h1>
+    <h1>Nova convocação</h1>
   {% endif %}
 
   <form method="POST" enctype="multipart/form-data">
