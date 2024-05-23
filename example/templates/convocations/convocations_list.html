@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Convocações
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Convocações</h1>
+
+    {% if convocations_list %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Criado em</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for convocation in convocations_list %}
+                    <tr>
+                        <th scope="row">{{ convocation.pk }}</th>
+                        <td>{{ convocation.title }}</td>
+                        <td>{{ convocation.description }}</td>
+                        <td><a href="{{ convocation.doc_url.url }}" download="{{ convocation.doc_url.url }}"> Baixar documento</a></td>
+                        <td>{{ convocation.created_at }}</td>
+                        <td>
+                            <a
+                                href="{% url 'convocations_update' pk=convocation.pk %}" 
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Editar
+                            </a>
+                            <a href="{% url 'convocations_delete' pk=convocation.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há convocações lançadas pelo condomínio</p>
+    {% endif %}
+    
+    {% if user.is_staff %}
+        <a href="{% url 'convocations_create' %}" class="btn btn-primary">Nova Convocação</a>
+    {% endif %}
+{% endblock content %}
+

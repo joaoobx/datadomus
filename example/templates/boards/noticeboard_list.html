@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Avisos
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Avisos</h1>
+
+    {% if noticeboard_list %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Criado em</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for notice in noticeboard_list %}
+                    <tr>
+                        <th scope="row">{{ notice.pk }}</th>
+                        <td>{{ notice.title }}</td>
+                        <td>{{ notice.description }}</td>
+                        <td><a href="{{ notice.doc_url.url }}" download="{{ notice.doc_url.url }}"> Baixar documento</a></td>
+                        <td>{{ notice.created_at }}</td>
+                        <td>
+                            <a
+                                href="{% url 'notice_boards_update' pk=notice.pk %}" 
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Editar
+                            </a>
+                            <a href="{% url 'notice_boards_delete' pk=notice.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há avisos lançados pelo condomínio</p>
+    {% endif %}
+    
+    {% if user.is_staff %}
+        <a href="{% url 'notice_boards_create' %}" class="btn btn-primary">Novo Aviso</a>
+    {% endif %}
+{% endblock content %}
+

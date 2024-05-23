@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Documentos
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Documentos do Usuário</h1>
+
+    {% if userdocuments_list %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Adicionado em</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for user_doc in userdocuments_list %}
+                    <tr>
+                        <th scope="row">{{ user_doc.pk }}</th>
+                        <td>{{ user_doc.doc_name }}</td>
+                        <td><a href="{{ user_doc.doc_url.url }}" download="{{ user_doc.doc_url.url }}"> Baixar documento</a></td>
+                        <td>{{ user_doc.created_at }}</td>
+                        <td>
+                            <a
+                                href="{% url 'user_docs_update' pk=user_doc.pk %}" 
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Editar
+                            </a>
+                            <a href="{% url 'user_docs_delete' pk=user_doc.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há documentos lançados pelo usuário</p>
+    {% endif %}
+
+    <a href="{% url 'user_docs_create' %}" class="btn btn-primary">Novo Documento</a>
+{% endblock content %}
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+  {% if convocations.pk %}
+    Editar Convocação
+  {% else %}
+    Nova Convocação
+  {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+  {% if convocations.pk %}
+    <h1>Editar convocação</h1>
+  {% else %}
+    <h1>Nova convocação</h1>
+  {% endif %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+{% endblock content %}
+
+    

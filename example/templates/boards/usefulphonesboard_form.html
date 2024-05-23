@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+  {% if usefulphone.pk %}
+    Editar Telefone Útil
+  {% else %}
+    Novo Telefone Útil
+  {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+  {% if usefulphone.pk %}
+    <h1>Editar telefone útil</h1>
+  {% else %}
+    <h1>Novo telefone útil</h1>
+  {% endif %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+{% endblock content %}
+
+    

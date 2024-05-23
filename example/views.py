@@ -27,6 +27,10 @@ class ExampleUpdateView(LoginRequiredMixin, UpdateView):
     fields = ["title", "deadline", "image"]
     success_url = reverse_lazy("example_list")
 
+    """ def form_valid(self, form):
+        form.instance.title = self.request.user.id
+        return super(ExampleUpdateView, self).form_valid(form) """
+
 class ExampleDeleteView(LoginRequiredMixin, DeleteView):
     model = Example
     success_url = reverse_lazy("example_list")

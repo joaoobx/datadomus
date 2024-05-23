@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Excluír Telefone Útil
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Excluír Telefone Útil?</h1>
+
+    <p>Tem certeza que deseja excluír o telefone útil <strong>{{ usefulphonesboard.title }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">Excluír</button>
+        <a href="{% url 'useful_phones_boards_list' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+{% endblock content %}

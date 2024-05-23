@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Sugestões
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Sugestões</h1>
+
+    {% if sugestionboard_list %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Criado em</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for sugestion in sugestionboard_list %}
+                    <tr>
+                        <th scope="row">{{ sugestion.pk }}</th>
+                        <td>{{ sugestion.title }}</td>
+                        <td>{{ sugestion.description }}</td>
+                        <td><a href="{{ sugestion.doc_url.url }}" download="{{ sugestion.doc_url.url }}"> Baixar documento</a></td>
+                        <td>{{ sugestion.created_at }}</td>
+                        <td>
+                            <a
+                                href="{% url 'sugestion_boards_update' pk=sugestion.pk %}" 
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Editar
+                            </a>
+                            <a href="{% url 'sugestion_boards_delete' pk=sugestion.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há sugestões lançadas pelos usuários</p>
+    {% endif %}
+    
+    <a href="{% url 'sugestion_boards_create' %}" class="btn btn-primary">Nova Sugestão</a>
+{% endblock content %}
+

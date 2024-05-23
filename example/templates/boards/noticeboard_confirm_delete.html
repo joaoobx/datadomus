@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Excluír Aviso
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Excluír Aviso?</h1>
+
+    <p>Tem certeza que deseja excluír o aviso <strong>{{ noticeboard.title }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">Excluír</button>
+        <a href="{% url 'notice_boards_list' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+{% endblock content %}
