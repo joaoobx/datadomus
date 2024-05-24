@@ -7,7 +7,7 @@
 {% block content %}
     <h1>Excluír Aluguel de Espaço?</h1>
 
-    <p>Tem certeza que deseja excluír o aluguel de espaço <strong>{{ spacereservations.title }}</strong>?</p>
+    <p>Tem certeza que deseja excluír o aluguel de espaço <strong>{{ spacereservations.description }}</strong>?</p>
 
     <form method="POST">
         {% csrf_token %}

@@ -13,7 +13,6 @@
         <div class="container-fluid">
             <a class="navbar-brand">Datadomus</a>
             {% if user.is_authenticated %}
-            <a class="navbar-brand" href="{% url 'example_list' %}">Exemplo</a>
             <a class="navbar-brand" href="{% url 'cond_docs_list' %}">Documentos do Condomínio</a>
             <a class="navbar-brand" href="{% url 'user_docs_list' %}">Documentos do Usuário</a>
             <a class="navbar-brand" href="{% url 'notice_boards_list' %}">Avisos</a>
@@ -23,6 +22,7 @@
             <a class="navbar-brand" href="{% url 'convocations_list' %}">Convocações</a>
             <a class="navbar-brand" href="{% url 'car_reservations_list' %}">Aluguéis de Vagas</a>
             <a class="navbar-brand" href="{% url 'space_reservations_list' %}">Aluguéis de Espaços</a>
+            <a class="navbar-brand" href="{% url 'service_orders_list' %}">Ordens de Serviço</a>
             <a class="navbar-brand" href="{% url 'logout_user' %}">Sair</a>
             {% endif %}
         </div>

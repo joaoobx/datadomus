@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Ordens de Serviço
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Ordens de Serviço</h1>
+
+    {% if serviceorders_list %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Criado em</th>
+                <th scope="col">Visto em</th>
+                <th scope="col">Finalizado em</th>
+                <th scope="col">Imagem</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for serviceorder in serviceorders_list %}
+                    <tr>
+                        <th scope="row">{{ serviceorder.pk }}</th>
+                        <td>{{ serviceorder.title }}</td>
+                        <td>{{ serviceorder.description }}</td>
+                        <td>{{ serviceorder.created_at }}</td>
+                        <td>{{ serviceorder.read_at }}</td>
+                        <td>{{ serviceorder.finished_at }}</td>
+                        <td><img src="{{ serviceorder.image_url.url }}" width=100></td>
+                        <td>
+                            <a
+                                href="{% url 'service_orders_update' pk=serviceorder.pk %}" 
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Editar
+                            </a>
+                            <a href="{% url 'service_orders_delete' pk=serviceorder.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há convocações lançadas pelo condomínio</p>
+    {% endif %}
+    
+    <a href="{% url 'service_orders_create' %}" class="btn btn-primary">Nova Ordem de Serviço</a>
+    
+{% endblock content %}
+

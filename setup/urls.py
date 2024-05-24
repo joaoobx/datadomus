@@ -11,6 +11,7 @@ urlpatterns = [
     path('boards/', include('boards.urls')),
     path('reservations/', include('reservations.urls')),
     path('convocations/', include('convocations.urls')),
+    path('service-orders/', include('service_orders.urls')),
     path('', include('users.urls')),
     path('users/', include('django.contrib.auth.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

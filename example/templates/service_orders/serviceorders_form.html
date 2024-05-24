@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+  {% if serviceorders.pk %}
+    Editar Ordem de Serviço
+  {% else %}
+    Nova Ordem de Serviço
+  {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+  {% if serviceorders.pk %}
+    <h1>Editar ordem de serviço</h1>
+  {% else %}
+    <h1>Nova ordem de serviço</h1>
+  {% endif %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+{% endblock content %}
+
+    
