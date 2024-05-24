@@ -16,7 +16,9 @@
                 <th scope="col">Locatário</th>
                 <th scope="col">Apartamento</th>
                 <th scope="col">Criado em</th>
-                <th scope="col">Ações</th>
+                {% if user.is_staff %}
+                    <th scope="col">Ações</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -27,15 +29,17 @@
                         <td>{{ carreservation.tenant_name }}</td>
                         <td>{{ carreservation.apartment }}</td>
                         <td>{{ carreservation.created_at }}</td>
-                        <td>
-                            <a
-                                href="{% url 'car_reservations_update' pk=carreservation.pk %}" 
-                                class="btn btn-secondary btn-sm"
-                            >
-                                Editar
-                            </a>
-                            <a href="{% url 'car_reservations_delete' pk=carreservation.pk %}" class="btn btn-danger btn-sm">Excluír</a>
-                        </td>
+                        {% if user.is_staff %}
+                            <td>
+                                <a
+                                    href="{% url 'car_reservations_update' pk=carreservation.pk %}" 
+                                    class="btn btn-secondary btn-sm"
+                                >
+                                    Editar
+                                </a>
+                                <a href="{% url 'car_reservations_delete' pk=carreservation.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

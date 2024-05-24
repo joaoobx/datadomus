@@ -16,7 +16,9 @@
                 <th scope="col">Descrição</th>
                 <th scope="col">Apartamento</th>
                 <th scope="col">Criado em</th>
-                <th scope="col">Ações</th>
+                {% if user.is_staff %}
+                    <th scope="col">Ações</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -27,15 +29,17 @@
                         <td>{{ spacereservations.description }}</td>
                         <td>{{ spacereservations.apartment }}</td>
                         <td>{{ spacereservations.created_at }}</td>
-                        <td>
-                            <a
-                                href="{% url 'space_reservations_update' pk=spacereservations.pk %}" 
-                                class="btn btn-secondary btn-sm"
-                            >
-                                Editar
-                            </a>
-                            <a href="{% url 'space_reservations_delete' pk=spacereservations.pk %}" class="btn btn-danger btn-sm">Excluír</a>
-                        </td>
+                        {% if user.is_staff %}
+                            <td>
+                                <a
+                                    href="{% url 'space_reservations_update' pk=spacereservations.pk %}" 
+                                    class="btn btn-secondary btn-sm"
+                                >
+                                    Editar
+                                </a>
+                                <a href="{% url 'space_reservations_delete' pk=spacereservations.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

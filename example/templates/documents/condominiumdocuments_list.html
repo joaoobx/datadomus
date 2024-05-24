@@ -15,7 +15,9 @@
                 <th scope="col">Título</th>
                 <th scope="col">Documento</th>
                 <th scope="col">Adicionado em</th>
-                <th scope="col">Ações</th>
+                {% if user.is_staff %}
+                    <th scope="col">Ações</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -25,15 +27,17 @@
                         <td>{{ cond_doc.doc_name }}</td>
                         <td><a href="{{ cond_doc.doc_url.url }}" download="{{ cond_doc.doc_url.url }}"> Baixar documento</a></td>
                         <td>{{ cond_doc.created_at }}</td>
-                        <td>
-                            <a
-                                href="{% url 'cond_docs_update' pk=cond_doc.pk %}" 
-                                class="btn btn-secondary btn-sm"
-                            >
-                                Editar
-                            </a>
-                            <a href="{% url 'cond_docs_delete' pk=cond_doc.pk %}" class="btn btn-danger btn-sm">Excluír</a>
-                        </td>
+                        {% if user.is_staff %}
+                            <td>
+                                <a
+                                    href="{% url 'cond_docs_update' pk=cond_doc.pk %}" 
+                                    class="btn btn-secondary btn-sm"
+                                >
+                                    Editar
+                                </a>
+                                <a href="{% url 'cond_docs_delete' pk=cond_doc.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

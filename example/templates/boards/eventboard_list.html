@@ -16,7 +16,9 @@
                 <th scope="col">Descrição</th>
                 <th scope="col">Documento</th>
                 <th scope="col">Criado em</th>
-                <th scope="col">Ações</th>
+                {% if user.is_staff %}
+                    <th scope="col">Ações</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -27,15 +29,17 @@
                         <td>{{ event.description }}</td>
                         <td><a href="{{ event.doc_url.url }}" download="{{ event.doc_url.url }}"> Baixar documento</a></td>
                         <td>{{ event.created_at }}</td>
-                        <td>
-                            <a
-                                href="{% url 'event_boards_update' pk=event.pk %}" 
-                                class="btn btn-secondary btn-sm"
-                            >
-                                Editar
-                            </a>
-                            <a href="{% url 'event_boards_delete' pk=event.pk %}" class="btn btn-danger btn-sm">Excluír</a>
-                        </td>
+                        {% if user.is_staff %}
+                            <td>
+                                <a
+                                    href="{% url 'event_boards_update' pk=event.pk %}" 
+                                    class="btn btn-secondary btn-sm"
+                                >
+                                    Editar
+                                </a>
+                                <a href="{% url 'event_boards_delete' pk=event.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>

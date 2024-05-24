@@ -16,7 +16,9 @@
                 <th scope="col">Descrição</th>
                 <th scope="col">Documento</th>
                 <th scope="col">Criado em</th>
-                <th scope="col">Ações</th>
+                {% if user.is_staff %}
+                    <th scope="col">Ações</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -27,15 +29,17 @@
                         <td>{{ convocation.description }}</td>
                         <td><a href="{{ convocation.doc_url.url }}" download="{{ convocation.doc_url.url }}"> Baixar documento</a></td>
                         <td>{{ convocation.created_at }}</td>
-                        <td>
-                            <a
-                                href="{% url 'convocations_update' pk=convocation.pk %}" 
-                                class="btn btn-secondary btn-sm"
-                            >
-                                Editar
-                            </a>
-                            <a href="{% url 'convocations_delete' pk=convocation.pk %}" class="btn btn-danger btn-sm">Excluír</a>
-                        </td>
+                        {% if user.is_staff %}
+                            <td>
+                                <a
+                                    href="{% url 'convocations_update' pk=convocation.pk %}" 
+                                    class="btn btn-secondary btn-sm"
+                                >
+                                    Editar
+                                </a>
+                                <a href="{% url 'convocations_delete' pk=convocation.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                            </td>
+                        {% endif %}
                     </tr>
                 {% endfor %}
             </tbody>
