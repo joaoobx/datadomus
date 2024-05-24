@@ -30,23 +30,14 @@ class UserDocumentsListView(LoginRequiredMixin, ListView):
 
 class UserDocumentsCreateView(LoginRequiredMixin, CreateView):
     model = UserDocuments
-    fields = ["doc_name", "doc_url"]
+    fields = ["user", "doc_name", "doc_url"]
     success_url = reverse_lazy("user_docs_list")
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(UserDocumentsCreateView, self).form_valid(form)
 
 class UserDocumentsUpdateView(LoginRequiredMixin, UpdateView):
     model = UserDocuments
-    fields = ["doc_name", "doc_url"]
+    fields = ["user", "doc_name", "doc_url"]
     success_url = reverse_lazy("user_docs_list")
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(UserDocumentsUpdateView, self).form_valid(form)
 
 class UserDocumentsDeleteView(LoginRequiredMixin, DeleteView):
     model = UserDocuments
     success_url = reverse_lazy("user_docs_list")
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(UserDocumentsDeleteView, self).form_valid(form)

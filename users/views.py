@@ -6,14 +6,14 @@ from django.urls import reverse
 
 def login_user(request):
 	if request.user.is_authenticated:
-		return redirect(reverse("example_list")) 
+		return redirect(reverse("cond_docs_list")) 
 	if request.method == "POST":
 		username = request.POST['username']
 		password = request.POST['password']
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return redirect('example_list')
+			return redirect('cond_docs_list')
 		else:
 			messages.success(request, ("Dados inválidos, tente novamente..."))	
 			return redirect('login_user')	
