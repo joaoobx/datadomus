@@ -30,7 +30,7 @@ DEBUG = config("DEBUG", cast=bool, default=False)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 
-LOGOUT_REDIRECT_URL = 'login/'
+LOGOUT_REDIRECT_URL = 'admin/'
 
 
 # Application definition
