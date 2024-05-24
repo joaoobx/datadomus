@@ -34,10 +34,12 @@
                         <td>
                             <a
                                 href="{% url 'service_orders_update' pk=serviceorder.pk %}" 
-                                class="btn btn-secondary btn-sm"
+                                class="btn btn-secondary btn-sm {% if serviceorder.finished_at %}disabled{% endif %}"
                             >
                                 Editar
                             </a>
+                            <a href="{% url 'service_orders_read' pk=serviceorder.pk %}" class="btn btn-secondary btn-sm {% if serviceorder.read_at %}disabled{% endif %}">Reconhecer</a>
+                            <a href="{% url 'service_orders_finish' pk=serviceorder.pk %}" class="btn btn-secondary btn-sm {% if serviceorder.finished_at %}disabled{% endif %}">Finalizar</a>
                             <a href="{% url 'service_orders_delete' pk=serviceorder.pk %}" class="btn btn-danger btn-sm">Excluír</a>
                         </td>
                     </tr>

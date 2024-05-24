@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from datetime import date, datetime
 
 class ServiceOrders(models.Model):
     user = models.ForeignKey(
@@ -14,3 +15,13 @@ class ServiceOrders(models.Model):
     finished_at = models.DateTimeField(null=True)
     updated_at = models.DateTimeField(auto_now=True, max_length=100)
     deleted_at = models.DateTimeField(null=True)
+    
+    def mark_has_read(self):
+        if not self.read_at:
+            self.read_at = datetime.now()
+            self.save()
+    
+    def mark_has_finished(self):
+        if not self.finished_at:
+            self.finished_at = datetime.now()
+            self.save()
