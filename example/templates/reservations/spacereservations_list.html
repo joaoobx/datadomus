@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Lista de Alugueis de Espaços
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Lista de Alugueis de Espaços</h1>
+
+    {% if spacereservations_list %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Locatário</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Apartamento</th>
+                <th scope="col">Criado em</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for spacereservations in spacereservations_list %}
+                    <tr>
+                        <th scope="row">{{ spacereservations.pk }}</th>
+                        <td>{{ spacereservations.user }}</td>
+                        <td>{{ spacereservations.description }}</td>
+                        <td>{{ spacereservations.apartment }}</td>
+                        <td>{{ spacereservations.created_at }}</td>
+                        <td>
+                            <a
+                                href="{% url 'space_reservations_update' pk=spacereservations.pk %}" 
+                                class="btn btn-secondary btn-sm"
+                            >
+                                Editar
+                            </a>
+                            <a href="{% url 'space_reservations_delete' pk=spacereservations.pk %}" class="btn btn-danger btn-sm">Excluír</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Não há alugueis de espaços lançados pelo condomínio</p>
+    {% endif %}
+    
+    {% if user.is_staff %}
+        <a href="{% url 'space_reservations_create' %}" class="btn btn-primary">Novo Aluguel de Espaço</a>
+    {% endif %}
+{% endblock content %}
+

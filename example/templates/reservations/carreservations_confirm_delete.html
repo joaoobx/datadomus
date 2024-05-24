@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+    Excluír Aluguel de Vaga
+{% endblock page_title %}
+
+{% block content %}
+    <h1>Excluír Aluguel de Vaga?</h1>
+
+    <p>Tem certeza que deseja excluír o aluguel de vaga <strong>{{ carreservations.title }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">Excluír</button>
+        <a href="{% url 'car_reservations_list' %}" class="btn btn-primary">Cancelar</a>
+    </form>
+{% endblock content %}

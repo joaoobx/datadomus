@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+  {% if carreservations.pk %}
+    Editar Aluguel de Vaga
+  {% else %}
+    Novo Aluguel de Vaga
+  {% endif %}
+{% endblock page_title %}
+
+{% block content %}
+  {% if carreservations.pk %}
+    <h1>Editar aluguel de vaga</h1>
+  {% else %}
+    <h1>Novo aluguel de vaga</h1>
+  {% endif %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+{% endblock content %}
+
+    
